@@ -1,39 +1,31 @@
 <template v-if="pass" v-slot:append>
-  <q-page padding>
-    <p class="col-12 text-h5 text-white text-bold text-center">
+  <q-page class="no-scroll overflow-auto" padding>
+    <p class="col-12 text-h5 text-white text-bold text-center q-pa-xl">
       Cadastre-se no Clube de Assinantes
     </p>
 
-    <div class="row justify-center">
+    <div class="row flex flex-center justify-center q-pa-xl">
       <!-- IMAGE -->
-      <div class="col-xs-10 col-sm-8 col-md-4">
-        <img class="mobile-hide desktop-only" src="../assets/logo.png" />
+      <div class="col-xs-10 col-sm-6 col-md-4 q-gutter-a-md">
+        <img class="mobile-hide" src="../assets/logo.png" />
       </div>
 
       <!-- FORM -->
-      <div class="col-xs-10 col-sm-8 col-md-4">
-        <q-form>
+      <div class="col-xs-10 col-sm-6 col-md-4 q-gutter-a-md">
+        <q-form class="q-pa-md">
           <p class="col-4 text-h5 text-600 text-white">Boas vindas</p>
           <q-input
-            placeholder="Digite seu Nome e Sobrenome"
-            label="Nome e Sobrenome"
+            label="Nome Completo *"
             v-model="name"
             type="name"
             clearable
           />
 
-          <q-input
-            placeholder="Seu melhor Email"
-            label="Email"
-            v-model="email"
-            type="email"
-            clearable
-          />
+          <q-input label="Email *" v-model="email" type="email" clearable />
 
           <!-- INPUT PASS WITH CLOSE AND TOGGLE -->
           <q-input
-            placeholder="Digite sua senha"
-            label="Senha"
+            label="Senha *"
             v-model="pass"
             :type="isPwd ? 'password' : 'text'"
             clearable
@@ -43,6 +35,25 @@
               <q-icon
                 @click="isPwd = !isPwd"
                 :name="isPwd ? 'visibility_off' : 'visibility'"
+                class="cursor-pointer"
+              />
+            </template>
+          </q-input>
+
+          <q-input
+            label="Confirme sua Senha *"
+            v-model="passConfirm"
+            :type="isPwdConfirm ? 'password' : 'text'"
+            clearable
+          >
+            <q-icon
+              @click.stop.prevent="passConfirm = null"
+              class="cursor-pointer"
+            />
+            <template v-slot:append>
+              <q-icon
+                @click="isPwdConfirm = !isPwdConfirm"
+                :name="isPwdConfirm ? 'visibility_off' : 'visibility'"
                 class="cursor-pointer"
               />
             </template>
@@ -76,9 +87,11 @@ export default defineComponent({
     const router = useRouter();
     return {
       isPwd: ref(true),
-      pass: ref(""),
+      isPwdConfirm: ref(true),
       name: ref(""),
       email: ref(""),
+      pass: ref(""),
+      passConfirm: ref(""),
     };
   },
 });
@@ -86,8 +99,9 @@ export default defineComponent({
 <style>
 .q-form {
   background: #384145;
-  width: auto;
+  width: 413px;
   height: 449px;
   border-radius: 4px;
+  box-sizing: border-box;
 }
 </style>
