@@ -2,7 +2,7 @@
   <q-layout view="lHh Lpr lFf">
     <q-header reveal elevated>
       <q-toolbar>
-        <q-toolbar-title> PIPOCA AGIL </q-toolbar-title>
+        <q-toolbar-title class=""> PIPOCA AGIL </q-toolbar-title>
       </q-toolbar>
     </q-header>
     <q-page-container>

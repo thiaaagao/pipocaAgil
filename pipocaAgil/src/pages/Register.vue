@@ -4,28 +4,38 @@
       Cadastre-se no Clube de Assinantes
     </p>
 
-    <div class="row flex flex-center justify-center q-pa-xl">
+    <div class="row flex flex-center justify-evenly q-pa-xl">
       <!-- IMAGE -->
       <div class="col-xs-10 col-sm-6 col-md-4 q-gutter-a-md">
         <img class="mobile-hide" src="../assets/logo.png" />
       </div>
 
       <!-- FORM -->
-      <div class="col-xs-10 col-sm-6 col-md-4 q-gutter-a-md">
+      <div class="col-xs-10 col-sm-6 col-md-4 q-gutter-xy-md">
         <q-form class="q-pa-md">
           <p class="col-4 text-h5 text-600 text-white">Boas vindas</p>
           <q-input
             label="Nome Completo *"
             v-model="name"
             type="name"
+            standout="text-white"
             clearable
+            lazy-rules
+            :rules="[ val => val && val.length > 0 || 'Please type something']"
           />
 
-          <q-input label="Email *" v-model="email" type="email" clearable />
+          <q-input
+            label="Email *"
+            standout="text-white"
+            v-model="email"
+            type="email"
+            clearable
+          />
 
           <!-- INPUT PASS WITH CLOSE AND TOGGLE -->
           <q-input
             label="Senha *"
+            standout="text-white"
             v-model="pass"
             :type="isPwd ? 'password' : 'text'"
             clearable
@@ -43,6 +53,7 @@
           <q-input
             label="Confirme sua Senha *"
             v-model="passConfirm"
+            standout="text-white"
             :type="isPwdConfirm ? 'password' : 'text'"
             clearable
           >
@@ -62,14 +73,16 @@
           <!-- INPUT PASS WITH CLOSE AND TOGGLE -->
 
           <!-- Btn register -->
-          <q-btn
-            label="Cadastre-se"
-            color="warning"
-            type="submit"
-            text-color="secondary"
-            class="full-width"
-            outlined
-          />
+          <div class="q-pt-xl">
+            <q-btn
+              label="Cadastre-se"
+              color="warning"
+              type="submit"
+              text-color="secondary"
+              class="full-width"
+              outlined
+            />
+          </div>
         </q-form>
       </div>
     </div>
