@@ -1,27 +1,34 @@
 <template v-if="pass" v-slot:append>
-  <q-page class="no-scroll overflow-auto" padding>
-    <p class="col-12 text-h5 text-white text-bold text-center q-pa-xl">
+  <q-page padding>
+    <p class="col-12 text-h5 text-white text-bold text-center q-pa-md">
       Cadastre-se no Clube de Assinantes
     </p>
 
     <div class="row flex flex-center justify-evenly q-pa-xl">
       <!-- IMAGE -->
-      <div class="col-xs-10 col-sm-6 col-md-4 q-gutter-a-md">
-        <img class="mobile-hide" src="../assets/logo.png" />
+      <div class="col-xs-12 col-sm-6 col-md-4 q-gutter-y-md">
+        <q-img loading="lazy" class="mobile-hide" src="../assets/logo.png" />
       </div>
 
       <!-- FORM -->
-      <div class="col-xs-10 col-sm-6 col-md-4 q-gutter-xy-md">
-        <q-form class="q-pa-md">
+      <div class="col-xs-12 col-sm-6 col-md-4 q-gutter-y-md">
+        <q-form
+          @submit="HandleRegister"
+          class="q-pa-md q-gutter-y-sm col-md-10"
+        >
           <p class="col-4 text-h5 text-600 text-white">Boas vindas</p>
           <q-input
             label="Nome Completo *"
             v-model="name"
             type="name"
             standout="text-white"
+            outlined
             clearable
             lazy-rules
-            :rules="[ val => val && val.length > 0 || 'Please type something']"
+            :rules="[
+              (val) =>
+                (val && val.length > 0) || 'Digite o seu nome e sobrenome!',
+            ]"
           />
 
           <q-input
@@ -29,7 +36,10 @@
             standout="text-white"
             v-model="email"
             type="email"
+            outlined
             clearable
+            lazy-rules
+            :rules="[(val) => (val && val.length > 0) || 'Digite o seu email!']"
           />
 
           <!-- INPUT PASS WITH CLOSE AND TOGGLE -->
@@ -39,6 +49,19 @@
             v-model="pass"
             :type="isPwd ? 'password' : 'text'"
             clearable
+            outlined
+            lazy-rules
+            :rules="[
+              (val) =>
+                (val && val.length >= 8) ||
+                'A senha deve ter no mínimo 8 caracteres',
+              (val) =>
+                /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8,}$/.test(
+                  val
+                ) ||
+                'A senha deve conter pelo menos uma letra maiúscula, um número e um caractere especial',
+              this.validatePasswordConfirmation,
+            ]"
           >
             <q-icon @click.stop.prevent="pass = null" class="cursor-pointer" />
             <template v-slot:append>
@@ -56,6 +79,14 @@
             standout="text-white"
             :type="isPwdConfirm ? 'password' : 'text'"
             clearable
+            outlined
+            lazy-rules
+            :rules="[
+              (val) =>
+                (val && val.length >= 8) ||
+                'A senha deve ter no mínimo 8 caracteres',
+              this.validatePasswordConfirmation,
+            ]"
           >
             <q-icon
               @click.stop.prevent="passConfirm = null"
@@ -73,7 +104,7 @@
           <!-- INPUT PASS WITH CLOSE AND TOGGLE -->
 
           <!-- Btn register -->
-          <div class="q-pt-xl">
+          <div class="q-pt-sm">
             <q-btn
               label="Cadastre-se"
               color="warning"
@@ -98,13 +129,38 @@ export default defineComponent({
 
   setup() {
     const router = useRouter();
+    const isPwd = ref(true);
+    const isPwdConfirm = ref(true);
+    const name = ref("");
+    const email = ref("");
+    const pass = ref("");
+    const passConfirm = ref("");
+
+    const passwordMatch = () => {
+      return this.pass === this.passConfirm;
+    };
+
+    const validatePasswordConfirmation = (val) => {
+      return val === pass.value || "As senhas não coincidem";
+    };
+
+    const HandleRegister = () => {
+      console.log("Nome:", name);
+      console.log("Email:", email);
+      console.log("Senha:", pass);
+      console.log("Confirmação de Senha:", passConfirm);
+    };
+
     return {
-      isPwd: ref(true),
-      isPwdConfirm: ref(true),
-      name: ref(""),
-      email: ref(""),
-      pass: ref(""),
-      passConfirm: ref(""),
+      isPwd,
+      isPwdConfirm,
+      name,
+      email,
+      pass,
+      passConfirm,
+      HandleRegister,
+      validatePasswordConfirmation,
+      passwordMatch,
     };
   },
 });
@@ -112,8 +168,6 @@ export default defineComponent({
 <style>
 .q-form {
   background: #384145;
-  width: 413px;
-  height: 449px;
   border-radius: 4px;
   box-sizing: border-box;
 }
