@@ -7,7 +7,12 @@
     <div class="row flex flex-center justify-evenly q-pa-xl">
       <!-- IMAGE -->
       <div class="col-xs-12 col-sm-6 col-md-4 q-gutter-y-md">
-        <q-img loading="lazy" class="mobile-hide" src="../assets/logo.png" />
+        <q-img
+          spinner-color="white"
+          spinner-size="80px"
+          class="mobile-hide"
+          src="../assets/logo.png"
+        />
       </div>
 
       <!-- FORM -->
@@ -170,5 +175,9 @@ export default defineComponent({
   background: #384145;
   border-radius: 4px;
   box-sizing: border-box;
+}
+.q-btn {
+  font-weight: bold;
+  font-style: normal;
 }
 </style>
