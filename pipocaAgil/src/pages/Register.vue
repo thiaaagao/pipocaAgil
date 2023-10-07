@@ -1,8 +1,10 @@
 <template v-if="pass" v-slot:append>
-  <q-page padding>
-    <p class="col-12 text-h5 text-white text-bold text-center q-pa-md">
-      Cadastre-se no Clube de Assinantes
-    </p>
+  <q-page class="q-overflow-hidden" padding>
+    <div class="q-pb-lg">
+      <p class="col-12 text-h6 text-white text-bold text-center">
+        Cadastre-se no Clube de Assinantes
+      </p>
+    </div>
 
     <div class="row flex flex-center justify-evenly q-pa-xl">
       <!-- IMAGE -->
@@ -17,25 +19,24 @@
 
       <!-- FORM -->
       <div class="col-xs-12 col-sm-6 col-md-4 q-gutter-y-md">
-        <q-form
-          @submit="HandleRegister"
-          class="q-pa-md q-gutter-y-sm col-md-10"
-        >
+        <q-form @submit="HandleRegister" class="q-pa-md">
           <p class="col-4 text-h5 text-600 text-white">Boas vindas</p>
           <q-input
             label="Nome Completo *"
             v-model="name"
             type="name"
             standout="text-white"
+            borderless
             outlined
             clearable
             lazy-rules
             :rules="[
               (val) =>
-                (val && val.length > 0) || 'Digite o seu nome e sobrenome!',
+                (val && val.length > 0) || 'Digite o seu Nome e Sobrenome !',
+              (val) =>
+                /^[A-Za-z]+$/.test(val) || 'Digite apenas letras neste campo !',
             ]"
           />
-
           <q-input
             label="Email *"
             standout="text-white"
@@ -44,7 +45,9 @@
             outlined
             clearable
             lazy-rules
-            :rules="[(val) => (val && val.length > 0) || 'Digite o seu email!']"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Digite o seu email !',
+            ]"
           />
 
           <!-- INPUT PASS WITH CLOSE AND TOGGLE -->
@@ -74,6 +77,7 @@
                 @click="isPwd = !isPwd"
                 :name="isPwd ? 'visibility_off' : 'visibility'"
                 class="cursor-pointer"
+                color="white"
               />
             </template>
           </q-input>
@@ -102,6 +106,7 @@
                 @click="isPwdConfirm = !isPwdConfirm"
                 :name="isPwdConfirm ? 'visibility_off' : 'visibility'"
                 class="cursor-pointer"
+                color="white"
               />
             </template>
           </q-input>
@@ -179,5 +184,8 @@ export default defineComponent({
 .q-btn {
   font-weight: bold;
   font-style: normal;
+}
+.q-form {
+  color: white;
 }
 </style>
