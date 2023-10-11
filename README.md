@@ -36,13 +36,14 @@ O aprendizado no projeto tem se como objetivo a aplicação da metodologia Ágil
 
 ## Autores
 - Desenvolvedores: 
-    - Full stack: [@Thiaaagao](https://www.github.com/thiaaagao)
-    - Full stack: 
+    - Full stack: [@Thiago Rodrigues](https://www.github.com/thiaaagao)
+    - Full stack: [@Márcio Mikulski](https://www.github.com/marciomikulski)
 - QA: 
     - []()
     - []()
 - PO:
   - [@Augusto Bernardes](https://www.linkedin.com/in/agostinho-alcalai-bernardes/)
+  - [@Elen Paixão](https://www.linkedin.com/in/elen-paixão-30513294/)
 - SM:
   - [@Charlienne Magalhães](https://www.linkedin.com/in/charliennemagalhaes/)
   - [@Thais Figueira](https://www.linkedin.com/in/figueirathais/)
