@@ -1,4 +1,4 @@
-<template v-if="pass" v-slot:append>
+<template v-if="password" v-slot:append>
   <q-page class="q-overflow-hidden" padding>
     <div class="q-pb-lg">
       <p class="col-12 text-h6 text-white text-bold text-center">
@@ -54,15 +54,15 @@
           <q-input
             label="Senha *"
             standout="text-white"
-            v-model="pass"
+            v-model="password"
             :type="isPwd ? 'password' : 'text'"
             clearable
             outlined
             lazy-rules
             :rules="[
               (val) =>
-                (val && val.length >= 8) ||
-                'A senha deve ter no mínimo 8 caracteres',
+                (val && val.length >= 7) ||
+                'A senha deve ter no mínimo 7 caracteres',
               (val) =>
                 /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8,}$/.test(
                   val
@@ -92,8 +92,8 @@
             lazy-rules
             :rules="[
               (val) =>
-                (val && val.length >= 8) ||
-                'A senha deve ter no mínimo 8 caracteres',
+                (val && val.length >= 7) ||
+                'A senha deve ter no mínimo 7 caracteres',
               this.validatePasswordConfirmation,
             ]"
           >
@@ -132,33 +132,35 @@
 
 <script>
 import { defineComponent, ref } from "vue";
-import { useRouter } from "vue-router";
+// import { useRouter } from "vue-router";
+// import useAuthUser from "src/composables/UseAuthUser";
 
 export default defineComponent({
   name: "PageRegister",
 
   setup() {
-    const router = useRouter();
+    const passConfirm = ref("");
+    // const { register } = useAuthUser();
+    // const router = useRouter();
     const isPwd = ref(true);
     const isPwdConfirm = ref(true);
     const name = ref("");
     const email = ref("");
-    const pass = ref("");
-    const passConfirm = ref("");
+    const password = ref("");
+
+    const HandleRegister = async () => {
+      console.log("Nome:", name.value);
+      console.log("Email:", email.value);
+      console.log("Senha:", password.value);
+      console.log("Confirmação de Senha:", passConfirm.value);
+    };
 
     const passwordMatch = () => {
-      return this.pass === this.passConfirm;
+      return this.password === this.passConfirm;
     };
 
     const validatePasswordConfirmation = (val) => {
-      return val === pass.value || "As senhas não coincidem";
-    };
-
-    const HandleRegister = () => {
-      console.log("Nome:", name);
-      console.log("Email:", email);
-      console.log("Senha:", pass);
-      console.log("Confirmação de Senha:", passConfirm);
+      return val === password.value || "As senhas não coincidem";
     };
 
     return {
@@ -166,7 +168,7 @@ export default defineComponent({
       isPwdConfirm,
       name,
       email,
-      pass,
+      password,
       passConfirm,
       HandleRegister,
       validatePasswordConfirmation,

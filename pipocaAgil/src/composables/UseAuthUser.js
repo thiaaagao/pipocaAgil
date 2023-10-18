@@ -1,10 +1,10 @@
 import { ref } from 'vue'
-import supabaseClient from '../boot/supabaseClient'
+import useSupabase from 'boot/supabase'
 
 const user = ref(null)
 
 export default function useAuthUser() {
-    const { supabase } = supabaseClient
+    const { supabase } = useSupabase()
 
     const login = async ({ email, password }) => {
         const { user, error } = await supabase.auth.signInWithPassword({ email, password })
@@ -22,16 +22,22 @@ export default function useAuthUser() {
         return !!user.value
     }
 
-    const register = async ({ email, password }) => {
-        const { user, error } = await supabase.auth.signIn(
-            { email, password }
+    const register = async ({ email, password, ...meta }) => { // register
+        const { user, error } = await supabase.auth.signUp(
+            { email, password, options: { data: meta } }
         )
         if (error) throw error
         return user
     }
 
-    const updateUser = async (data) => {
+    const update = async (data) => {
         const { user, error } = await supabase.auth.update(data)
+        if (error) throw error
+        return user
+    }
+
+    const sendPasswordResetEmail = async (email) => {
+        const { user, error } = await supabase.auth.resetPasswordForEmail(email)
         if (error) throw error
         return user
     }
@@ -42,6 +48,7 @@ export default function useAuthUser() {
         logout,
         isLoggedIn,
         register,
-        updateUser
+        update,
+        sendPasswordResetEmail,
     }
 }
