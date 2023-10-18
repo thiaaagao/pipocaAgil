@@ -41,13 +41,13 @@ O aprendizado no projeto tem se como objetivo a aplicação da metodologia Ágil
     - Back-end: [@Márcio Mikulski](https://www.github.com/marciomikulski)
 - QA: 
     - [@Rayane Marfin](https://www.linkedin.com/in/rayane-marfin/)
-    - []()
+    - [@Raquel Sarah](https://www.linkedin.com/in/raquel-sarah-liberati-20064b23b)
 - PO:
   - [@Augusto Bernardes](https://www.linkedin.com/in/agostinho-alcalai-bernardes/)
   - [@Elen Paixão](https://www.linkedin.com/in/elen-paixão-30513294/)
 - SM:
   - [@Charlienne Magalhães](https://www.linkedin.com/in/charliennemagalhaes/)
-  - [@Thais Figueira](https://www.linkedin.com/in/figueirathais/)
+  - []()
 - UX:
   - [@Bianca Santos](https://www.linkedin.com/in/biamrsantos/)
   - [@Ellen Machado](https://www.linkedin.com/in/ellen-machado/)
