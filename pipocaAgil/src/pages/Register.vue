@@ -132,16 +132,12 @@
 
 <script>
 import { defineComponent, ref } from "vue";
-// import { useRouter } from "vue-router";
-// import useAuthUser from "src/composables/UseAuthUser";
 
 export default defineComponent({
   name: "PageRegister",
 
   setup() {
     const passConfirm = ref("");
-    // const { register } = useAuthUser();
-    // const router = useRouter();
     const isPwd = ref(true);
     const isPwdConfirm = ref(true);
     const name = ref("");
