@@ -50,7 +50,7 @@ O aprendizado no projeto tem se como objetivo a aplicação da metodologia Ágil
   - [@Thais Figueira](https://www.linkedin.com/in/figueirathais/)
 - UX:
   - [@Bianca Santos](https://www.linkedin.com/in/biamrsantos/)
-  - []()
+  - [@Ellen Machado](https://www.linkedin.com/in/ellen-machado/)
 
 
 
