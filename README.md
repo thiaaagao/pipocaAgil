@@ -12,7 +12,7 @@ Desenvolvimento de um Sistema de Cadastro de Assinantes onde será possível rea
 
 **Front-end:** Vue 3, Quasar
 
-**Back-end:** Supabase
+**Back-end:** NestJs
 
 **Gestão do Projeto**: Jira, Miro
 
@@ -39,7 +39,7 @@ O aprendizado no projeto tem se como objetivo a aplicação da metodologia Ágil
     - Full stack: [@Thiago Rodrigues](https://www.github.com/thiaaagao)
     - Full stack: [@Márcio Mikulski](https://www.github.com/marciomikulski)
 - QA: 
-    - []()
+    - [@]()
     - []()
 - PO:
   - [@Augusto Bernardes](https://www.linkedin.com/in/agostinho-alcalai-bernardes/)
