@@ -8,7 +8,7 @@
 
     <div class="row flex flex-center justify-evenly q-pa-xl">
       <!-- IMAGE -->
-      <div class="col-xs-12 col-sm-6 col-md-4 q-gutter-y-md">
+      <div class="col-xs-12 col-sm-6 col-md-4 q-gutter-y-xl mobile-hide">
         <q-img
           spinner-color="white"
           spinner-size="80px"
@@ -18,13 +18,13 @@
       </div>
 
       <!-- FORM -->
-      <div class="col-xs-12 col-sm-6 col-md-4 q-gutter-y-md">
-        <q-form @submit="HandleRegister" class="q-pa-md">
+      <div class="col-xs-12 col-sm-6 col-md-4 q-gutter-y-xl">
+        <q-form @submit="HandleRegister" class="q-pa-md q-ma-sm">
           <p class="col-4 text-h5 text-600 text-white">Boas vindas</p>
           <q-input
             label="Nome Completo *"
             v-model="name"
-            type="name"
+            type="text"
             standout="text-white"
             borderless
             outlined
@@ -33,8 +33,6 @@
             :rules="[
               (val) =>
                 (val && val.length > 0) || 'Digite o seu Nome e Sobrenome !',
-              (val) =>
-                /^[A-Za-z]+$/.test(val) || 'Digite apenas letras neste campo !',
             ]"
           />
           <q-input
@@ -64,7 +62,7 @@
                 (val && val.length >= 7) ||
                 'A senha deve ter no mínimo 7 caracteres',
               (val) =>
-                /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8,}$/.test(
+                /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{7,}$/.test(
                   val
                 ) ||
                 'A senha deve conter pelo menos uma letra maiúscula, um número e um caractere especial',
@@ -131,26 +129,63 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
+import api from "../services/api";
 
 export default defineComponent({
   name: "PageRegister",
 
   setup() {
+    /* const getUser = async () => {
+      try {
+        const response = await api.get("/users");
+        users.value = response.data;
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
+    }; */
+
+    /* onMounted(() => {
+      getUser();
+    });
+ */
+    const registerUser = async () => {
+      try {
+        const response = await api.post("/users", {
+          nome: name.value,
+          sobrenome: name.value,
+          email: email.value,
+          senha: password.value,
+          datanascimento: "2023-10-20T00:05:11.097Z",
+        });
+        alert(
+          "Usuário " + name.value + " cadastrado com sucesso",
+          response.data
+        );
+      } catch (error) {
+        console.log("Erro ao cadastrar o usuário", error);
+      }
+    };
+    const HandleRegister = () => {
+      registerUser();
+    };
+
     const passConfirm = ref("");
     const isPwd = ref(true);
     const isPwdConfirm = ref(true);
     const name = ref("");
     const email = ref("");
     const password = ref("");
+    const users = ref([]);
 
-    const HandleRegister = async () => {
+    /*  const HandleRegister = () => {
       console.log("Nome:", name.value);
       console.log("Email:", email.value);
       console.log("Senha:", password.value);
       console.log("Confirmação de Senha:", passConfirm.value);
     };
-
+ */
     const passwordMatch = () => {
       return this.password === this.passConfirm;
     };
@@ -166,9 +201,10 @@ export default defineComponent({
       email,
       password,
       passConfirm,
-      HandleRegister,
       validatePasswordConfirmation,
       passwordMatch,
+      HandleRegister,
+      users,
     };
   },
 });
