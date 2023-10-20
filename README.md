@@ -23,7 +23,6 @@ Desenvolvimento de um Sistema de Cadastro de Assinantes onde será possível rea
 O aprendizado no projeto tem se como objetivo a aplicação da metodologia Ágil SCRUM. Durante todo o projeto os participantes da Equipe participaram de todas as etapas de discovery até a entrega do software, no qual obteve-se a experiência e vivência com a metodologia e com as ferramentas e stacks utilizadas.
 ## Funcionalidades
 
-- Temas dark e light
 - Preview em tempo real
 - Modo tela cheia
 - Responsividade para Mobile
