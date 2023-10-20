@@ -160,7 +160,7 @@ export default defineComponent({
           senha: password.value,
           datanascimento: "2023-10-20T00:05:11.097Z",
         });
-        console.log(
+        alert(
           "Usuário " + name.value + " cadastrado com sucesso",
           response.data
         );
@@ -169,7 +169,7 @@ export default defineComponent({
           message: "Usuário cadastrado com sucesso!",
         }); */
       } catch (error) {
-        console.error("Erro ao cadastrar o usuário", error);
+        alert("Erro ao cadastrar o usuário", error);
         /*  this.$q.notify({
           color: "negative",
           message: "Erro ao cadastrar o usuário",
