@@ -131,6 +131,7 @@
 <script>
 import { defineComponent, onMounted, ref } from "vue";
 import api from "../services/api";
+//import { Notify } from ".quasar";
 
 export default defineComponent({
   name: "PageRegister",
@@ -159,12 +160,20 @@ export default defineComponent({
           senha: password.value,
           datanascimento: "2023-10-20T00:05:11.097Z",
         });
-        alert(
+        console.log(
           "Usuário " + name.value + " cadastrado com sucesso",
           response.data
         );
+        /* this.$q.notify({
+          color: "positive",
+          message: "Usuário cadastrado com sucesso!",
+        }); */
       } catch (error) {
-        console.log("Erro ao cadastrar o usuário", error);
+        console.error("Erro ao cadastrar o usuário", error);
+        /*  this.$q.notify({
+          color: "negative",
+          message: "Erro ao cadastrar o usuário",
+        }); */
       }
     };
     const HandleRegister = () => {
@@ -205,6 +214,7 @@ export default defineComponent({
       passwordMatch,
       HandleRegister,
       users,
+      registerUser,
     };
   },
 });
