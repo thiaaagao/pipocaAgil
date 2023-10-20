@@ -1,5 +1,5 @@
 <template v-if="password" v-slot:append>
-  <q-page class="q-overflow-hidden" padding>
+  <q-page padding>
     <div class="q-pb-lg">
       <p class="col-12 text-h6 text-white text-bold text-center">
         Cadastre-se no Clube de Assinantes
@@ -19,21 +19,18 @@
 
       <!-- FORM -->
       <div class="col-xs-12 col-sm-6 col-md-4 q-gutter-y-xl">
-        <q-form @submit="HandleRegister" class="q-pa-md q-ma-sm">
+        <q-form @submit="HandleRegister" class="q-pa-md q-ma-sm q-gutter-y-md">
           <p class="col-4 text-h5 text-600 text-white">Boas vindas</p>
           <q-input
             label="Nome Completo *"
-            v-model="name"
+            v-model="nameFull"
             type="text"
             standout="text-white"
             borderless
             outlined
             clearable
             lazy-rules
-            :rules="[
-              (val) =>
-                (val && val.length > 0) || 'Digite o seu Nome e Sobrenome !',
-            ]"
+            :rules="[validateNameFull]"
           />
           <q-input
             label="Email *"
@@ -44,7 +41,7 @@
             clearable
             lazy-rules
             :rules="[
-              (val) => (val && val.length > 0) || 'Digite o seu email !',
+              (val) => (val && val.length > 0) || 'Digite um email válido !',
             ]"
           />
 
@@ -65,7 +62,7 @@
                 /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{7,}$/.test(
                   val
                 ) ||
-                'A senha deve conter pelo menos uma letra maiúscula, um número e um caractere especial',
+                ' menos uma letra maiúscula, um número e um caractere especial',
               this.validatePasswordConfirmation,
             ]"
           >
@@ -154,14 +151,14 @@ export default defineComponent({
     const registerUser = async () => {
       try {
         const response = await api.post("/users", {
-          nome: name.value,
-          sobrenome: name.value,
+          nome: nameFull.value,
+          sobrenome: nameFull.value,
           email: email.value,
           senha: password.value,
           datanascimento: "2023-10-20T00:05:11.097Z",
         });
         alert(
-          "Usuário " + name.value + " cadastrado com sucesso",
+          "Usuário " + nameFull.value + " cadastrado com sucesso",
           response.data
         );
         /* this.$q.notify({
@@ -183,7 +180,7 @@ export default defineComponent({
     const passConfirm = ref("");
     const isPwd = ref(true);
     const isPwdConfirm = ref(true);
-    const name = ref("");
+    const nameFull = ref("");
     const email = ref("");
     const password = ref("");
     const users = ref([]);
@@ -195,6 +192,11 @@ export default defineComponent({
       console.log("Confirmação de Senha:", passConfirm.value);
     };
  */
+
+    const validateNameFull = (val) => {
+      const isValid = val.trim().split(" ").length > 1;
+      return isValid || "Digite o nome e sobrenome !";
+    };
     const passwordMatch = () => {
       return this.password === this.passConfirm;
     };
@@ -206,7 +208,7 @@ export default defineComponent({
     return {
       isPwd,
       isPwdConfirm,
-      name,
+      nameFull,
       email,
       password,
       passConfirm,
@@ -215,6 +217,7 @@ export default defineComponent({
       HandleRegister,
       users,
       registerUser,
+      validateNameFull,
     };
   },
 });
