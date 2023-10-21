@@ -19,7 +19,7 @@
 
       <!-- FORM -->
       <div class="col-xs-12 col-sm-6 col-md-4 q-gutter-y-xl">
-        <q-form @submit="HandleRegister" class="q-pa-md q-ma-xs q-gutter-y-md">
+        <q-form @submit="HandleRegister" class="q-pa-md q-ma-sm q-gutter-y-md">
           <p class="col-4 text-h5 text-600 text-white">Boas vindas</p>
           <q-input
             label="Nome Completo *"
@@ -161,7 +161,7 @@ export default defineComponent({
           message: "Usuário cadastrado com sucesso!",
         }); */
       } catch (error) {
-        alert("Erro ao cadastrar o usuário, Email já cadastrado", error);
+        alert("Erro ao cadastrar o usuário", error);
         /*  this.$q.notify({
           color: "negative",
           message: "Erro ao cadastrar o usuário",
