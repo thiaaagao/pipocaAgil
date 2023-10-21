@@ -25,9 +25,6 @@
             label="Nome Completo *"
             v-model="nameFull"
             type="text"
-            standout="text-white"
-            borderless
-            outlined
             clearable
             lazy-rules
             :rules="[validateNameFull]"
@@ -151,11 +148,9 @@ export default defineComponent({
     const registerUser = async () => {
       try {
         const response = await api.post("/users", {
-          nome: nameFull.value,
-          sobrenome: nameFull.value,
+          name: nameFull.value,
           email: email.value,
-          senha: password.value,
-          datanascimento: "2023-10-20T00:05:11.097Z",
+          password: password.value,
         });
         alert(
           "Usuário " + nameFull.value + " cadastrado com sucesso",
@@ -231,8 +226,5 @@ export default defineComponent({
 .q-btn {
   font-weight: bold;
   font-style: normal;
-}
-.q-form {
-  color: white;
 }
 </style>
