@@ -3,5 +3,24 @@
 
 * {
     font-family: 'Urbanist', sans-serif;
-    font-size: 12px;
+}
+
+.q-toolbar-title {
+    color: rgba(255, 255, 255, 1);
+    font-size: 38px;
+}
+
+.q-p {
+    color: rgba(255, 255, 255, 1);
+    font-size: 24px;
+    font-weight: 300;
+}
+
+p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.q-input {
+    color: rgba(255, 255, 255, 1);
 }

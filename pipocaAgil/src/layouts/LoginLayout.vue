@@ -3,7 +3,7 @@
     <q-header reveal elevated>
       <q-toolbar>
         <q-toolbar-title class="text-bold q-ma-md">
-          PIPOCA AGIL
+          PIPOCA ÁGIL
         </q-toolbar-title>
       </q-toolbar>
     </q-header>

@@ -125,19 +125,22 @@
 <script>
 import { defineComponent, onMounted, ref } from "vue";
 import api from "../services/api";
-//import { Notify } from ".quasar";
+import useNotify from "../composable/UseNotify";
 
 export default defineComponent({
   name: "PageRegister",
 
   setup() {
+    const { notifyError, notifySuccess } = useNotify();
+
     /* const getUser = async () => {
       try {
         const response = await api.get("/users");
         users.value = response.data;
-        console.log(response);
+        notifySuccess();
+        response.data;
       } catch (error) {
-        console.error(error);
+        notifyError(error.message);
       }
     }; */
 
@@ -152,20 +155,10 @@ export default defineComponent({
           email: email.value,
           password: password.value,
         });
-        alert(
-          "Usuário " + nameFull.value + " cadastrado com sucesso",
-          response.data
-        );
-        /* this.$q.notify({
-          color: "positive",
-          message: "Usuário cadastrado com sucesso!",
-        }); */
+        notifySuccess();
+        response.data;
       } catch (error) {
-        alert("Erro ao cadastrar o usuário", error);
-        /*  this.$q.notify({
-          color: "negative",
-          message: "Erro ao cadastrar o usuário",
-        }); */
+        notifyError("Email já registrado");
       }
     };
     const HandleRegister = () => {
@@ -213,6 +206,7 @@ export default defineComponent({
       users,
       registerUser,
       validateNameFull,
+      useNotify,
     };
   },
 });
