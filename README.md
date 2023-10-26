@@ -45,8 +45,8 @@ O aprendizado no projeto tem se como objetivo a aplicação da metodologia Ágil
   - [@Augusto Bernardes](https://www.linkedin.com/in/agostinho-alcalai-bernardes/)
   - [@Elen Paixão](https://www.linkedin.com/in/elen-paixão-30513294/)
 - SM:
-  - []()
-  - []()
+  - [@Karen Peixoto](https://www.linkedin.com/in/karen-mussi-peixoto/)
+  - [@Ricardo Lobato](https://www.linkedin.com/in/ricardolobato18/)
 - UX:
   - [@Bianca Santos](https://www.linkedin.com/in/biamrsantos/)
   - [@Ellen Machado](https://www.linkedin.com/in/ellen-machado/)
