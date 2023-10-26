@@ -24,7 +24,9 @@
           <q-input
             label="Nome Completo *"
             v-model="nameFull"
+            standout="text-white"
             type="text"
+            outlined
             clearable
             lazy-rules
             :rules="[validateNameFull]"
@@ -59,7 +61,7 @@
                 /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{7,}$/.test(
                   val
                 ) ||
-                ' menos uma letra maiúscula, um número e um caractere especial',
+                'Pelo menos uma letra maiúscula, letra minúscula, um número e um caractere especial',
               this.validatePasswordConfirmation,
             ]"
           >
@@ -182,6 +184,7 @@ export default defineComponent({
  */
 
     const validateNameFull = (val) => {
+      const lettersOnlyRegex = /^[A-Za-z\s]+$/;
       const isValid = val.trim().split(" ").length > 1;
       return isValid || "Digite o nome e sobrenome !";
     };
