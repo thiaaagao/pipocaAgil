@@ -1,6 +1,6 @@
 <template v-if="password" v-slot:append>
-  <q-page padding>
-    <div class="q-pb-lg">
+  <q-page class="overflow-hidden" padding>
+    <div class="q-pb-sm">
       <p class="col-12 text-h6 text-white text-bold text-center">
         Cadastre-se no Clube de Assinantes
       </p>
@@ -18,7 +18,7 @@
       </div>
 
       <!-- FORM -->
-      <div class="col-xs-12 col-sm-6 col-md-4 q-gutter-y-xl">
+      <div class="col-xs-12 col-sm-6 col-md-5 q-gutter-y-xl">
         <q-form @submit="HandleRegister" class="q-pa-md q-ma-sm q-gutter-y-md">
           <p class="col-4 text-h5 text-600 text-white">Boas vindas</p>
           <q-input
