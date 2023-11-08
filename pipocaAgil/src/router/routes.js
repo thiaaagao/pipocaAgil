@@ -8,6 +8,16 @@ const routes = [
       { path: 'consult', name: 'PageConsult', component: () => import('../pages/Consult.vue') }
     ]
   },
+  {
+    path: '/',
+    component: () => import('layouts/LoginLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Register.vue') }
+    ],
+    meta: {
+      requiresAuth: true
+    }
+  },
   // Always leave this as last one,
   // but you can also remove it
   {
