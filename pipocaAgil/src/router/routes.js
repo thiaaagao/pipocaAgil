@@ -12,7 +12,9 @@ const routes = [
     path: '/',
     component: () => import('layouts/LoginLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Register.vue') }
+      { path: '', component: () => import('pages/Register.vue') },
+      { path: '', component: () => import('pages/Consult.vue') }
+
     ],
     meta: {
       requiresAuth: true

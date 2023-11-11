@@ -33,17 +33,21 @@
             </q-list>
           </q-btn-dropdown>
         </div>
-
-        <q-form>
-          <q-input type="text" label="Nome" standout="text-white">
+        <!-- SUBMIT.PREVENT="onSubmit" -->
+        <q-form @submit-prevent="onSubmit">
+          <q-input
+            type="text"
+            placeholder="Digite um nome ou e-mail"
+            standout="text-white"
+            v-model="buscaUsuario"
+          >
             <template v-slot:append>
-              <q-icon name="search" />
-            </template>
-          </q-input>
-
-          <q-input type="email" label="Email" standout="text-white">
-            <template v-slot:append>
-              <q-icon name="search" />
+              <q-icon
+                name="search"
+                @onClick="onSubmit"
+                class="cursor-pointer"
+              />
+              <!-- AÇÃO DE CLICK PARA BUSCAR VEM DO ICONE -->
             </template>
           </q-input>
         </q-form>
@@ -72,16 +76,22 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: "PageConsult",
   setup() {
+    const buscaUsuario = ref("");
     const router = useRouter();
 
+    const onSubmit = () => {
+      console.log("Dado buscado:", buscaUsuario.value);
+    };
     return {
       router,
+      buscaUsuario,
+      onSubmit,
     };
   },
 });
