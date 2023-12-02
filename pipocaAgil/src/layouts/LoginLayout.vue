@@ -27,4 +27,7 @@ export default defineComponent({
 .q-page-container {
   background: linear-gradient(#222b30, #161616);
 }
+#logo {
+  width: 5%;
+}
 </style>

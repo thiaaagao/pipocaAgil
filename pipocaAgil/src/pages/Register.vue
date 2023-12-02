@@ -1,6 +1,6 @@
 <template v-if="password" v-slot:append>
-  <q-page padding>
-    <div class="q-pb-lg">
+  <q-page class="overflow-hidden" padding>
+    <div class="q-pb-sm">
       <p class="col-12 text-h6 text-white text-bold text-center">
         Cadastre-se no Clube de Assinantes
       </p>
@@ -18,13 +18,15 @@
       </div>
 
       <!-- FORM -->
-      <div class="col-xs-12 col-sm-6 col-md-4 q-gutter-y-xl">
+      <div class="col-xs-12 col-sm-6 col-md-5 q-gutter-y-xl">
         <q-form @submit="HandleRegister" class="q-pa-md q-ma-sm q-gutter-y-md">
           <p class="col-4 text-h5 text-600 text-white">Boas vindas</p>
           <q-input
             label="Nome Completo *"
             v-model="nameFull"
+            standout="text-white"
             type="text"
+            outlined
             clearable
             lazy-rules
             :rules="[validateNameFull]"
@@ -59,7 +61,7 @@
                 /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{7,}$/.test(
                   val
                 ) ||
-                ' menos uma letra maiúscula, um número e um caractere especial',
+                'Pelo menos uma letra maiúscula, letra minúscula, um número e um caractere especial',
               this.validatePasswordConfirmation,
             ]"
           >
@@ -133,21 +135,6 @@ export default defineComponent({
   setup() {
     const { notifyError, notifySuccess } = useNotify();
 
-    /* const getUser = async () => {
-      try {
-        const response = await api.get("/users");
-        users.value = response.data;
-        notifySuccess();
-        response.data;
-      } catch (error) {
-        notifyError(error.message);
-      }
-    }; */
-
-    /* onMounted(() => {
-      getUser();
-    });
- */
     const registerUser = async () => {
       try {
         const response = await api.post("/users", {
@@ -182,7 +169,8 @@ export default defineComponent({
  */
 
     const validateNameFull = (val) => {
-      const isValid = val.trim().split(" ").length > 1;
+      const lettersOnlyRegex = /^[A-Za-z\s]+$/;
+      const isValid = val.trim(" ").split(" ").length > 1;
       return isValid || "Digite o nome e sobrenome !";
     };
     const passwordMatch = () => {
