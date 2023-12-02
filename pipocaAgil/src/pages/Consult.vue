@@ -10,7 +10,7 @@
 
       <!-- CAMPOS CONSULTA HOME -->
       <div>
-        <div class="q-pa-md">
+        <div class="q-pa-md q-ma-xs">
           <q-btn-dropdown push no-caps>
             <template v-slot:label>
               <div class="row items-center no-wrap q-gutter-xs">
@@ -55,7 +55,7 @@
       <!-- CAMPOS CONSULTA END -->
 
       <!-- RESULTADO HOME -->
-      <div>
+      <div class="q-pt-lg">
         <p>Resultados</p>
         <div>
           <table>
@@ -97,7 +97,4 @@ export default defineComponent({
 });
 </script>
 <style>
-.q-page {
-  background: grey;
-}
 </style>

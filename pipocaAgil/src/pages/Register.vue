@@ -135,21 +135,6 @@ export default defineComponent({
   setup() {
     const { notifyError, notifySuccess } = useNotify();
 
-    /* const getUser = async () => {
-      try {
-        const response = await api.get("/users");
-        users.value = response.data;
-        notifySuccess();
-        response.data;
-      } catch (error) {
-        notifyError(error.message);
-      }
-    }; */
-
-    /* onMounted(() => {
-      getUser();
-    });
- */
     const registerUser = async () => {
       try {
         const response = await api.post("/users", {
@@ -185,7 +170,7 @@ export default defineComponent({
 
     const validateNameFull = (val) => {
       const lettersOnlyRegex = /^[A-Za-z\s]+$/;
-      const isValid = val.trim().split(" ").length > 1;
+      const isValid = val.trim(" ").split(" ").length > 1;
       return isValid || "Digite o nome e sobrenome !";
     };
     const passwordMatch = () => {
