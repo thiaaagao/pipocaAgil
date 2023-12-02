@@ -35,8 +35,7 @@ O aprendizado no projeto tem se como objetivo a aplicação da metodologia Ágil
 
 ## Autores
 - Desenvolvedores: 
-    - Front-end: [@Thiago Rodrigues](https://www.github.com/thiaaagao)
-    - Front-end [@Daniel Suzart](https://www.linkedin.com/in/daniel-suzart-40a454202/?originalSubdomain=br)
+    - Front-end:
     - Back-end: [@Márcio Mikulski](https://www.github.com/marciomikulski)
 - QA: 
     - [@Rayane Marfin](https://www.linkedin.com/in/rayane-marfin/)
